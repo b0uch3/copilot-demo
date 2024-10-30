@@ -1,0 +1,16 @@
+{
+  "name": "bucks2bar",
+  "version": "1.0.0",
+  "description": "This is a project called \"bucks2bar\" that uses the latest version of Bootstrap.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jsdom": "^25.0.1"
+  }
+}
