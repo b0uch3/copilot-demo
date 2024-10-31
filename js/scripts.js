@@ -70,6 +70,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  
+  async function sendEmailWithChart() {
+    const chartImage = myChart.toBase64Image(); 
+    const emailParams = {
+      to: document.getElementById('email-address').value,
+      subject: 'Your Chart Image',
+      text: 'Here is your chart image:',
+      chartImage: chartImage
+    };
+
+    try {
+      
+      const response = await fetch('http://localhost:3000/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(emailParams)
+      });
+
+      if (response.ok) {
+        console.log('Email sent successfully!');
+      } else {
+        console.error('Failed to send email:', await response.text());
+      }
+    } catch (error) {
+      console.error('Failed to send email:', error);
+    }
+  }
+
+  document.getElementById('send-email').addEventListener('click', sendEmailWithChart);
+
+
   // Update chart data when input values change
   document.querySelectorAll('input[id$="-income"], input[id$="-expenses"]').forEach(input => {
     input.addEventListener('input', () => {
